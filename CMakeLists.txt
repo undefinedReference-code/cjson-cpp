@@ -103,6 +103,7 @@ foreach(compiler_flag ${custom_compiler_flags})
     CHECK_C_COMPILER_FLAG(${compiler_flag} "FLAG_SUPPORTED_${current_variable}")
     if (FLAG_SUPPORTED_${current_variable})
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${compiler_flag}")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${compiler_flag}")
     endif()
 endforeach()
 
