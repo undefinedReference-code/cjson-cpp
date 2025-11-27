@@ -5,7 +5,9 @@ extern "C" {
 
 #include <charconv>
 #include <system_error>
-#include <limits>      
+#include <limits>
+#include "fast_float.h" 
+
 
 cJSON_bool parse_number_impl(cJSON* const item, parse_buffer* const input_buffer)
 {
@@ -23,7 +25,7 @@ cJSON_bool parse_number_impl(cJSON* const item, parse_buffer* const input_buffer
 
     double number = 0.0;
 
-    auto result = std::from_chars(current_ptr, end_ptr, number);
+    auto result = fast_float::from_chars(current_ptr, end_ptr, number);
 
     if (result.ec != std::errc()) {
         return false;
