@@ -16,6 +16,8 @@ set(CJSON_UTILS_VERSION_SO 1)
 set(custom_compiler_flags)
 
 include(CheckCCompilerFlag)
+include(CheckCXXCompilerFlag)
+
 option(ENABLE_CUSTOM_COMPILER_FLAGS "Enables custom compiler flags" ON)
 if (ENABLE_CUSTOM_COMPILER_FLAGS)
     if (("${CMAKE_C_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU"))
