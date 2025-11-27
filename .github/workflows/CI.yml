@@ -43,9 +43,9 @@ jobs:
             EVENT_CMAKE_OPTIONS="-DENABLE_CJSON_UTILS=ON -DENABLE_VALGRIND=OFF -DENABLE_SAFE_STACK=OFF -DENABLE_SANITIZERS=OFF"
           fi
           if [ "${{ matrix.compiler }}" == "GCC" ]; then
-            export CC=gcc
+            export CC=gcc CXX=g++
           else
-            export CC=clang
+            export CC=clang CXX=clang++
           fi
           #run build and test
           JOBS=20
