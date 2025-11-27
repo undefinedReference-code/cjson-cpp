@@ -100,10 +100,14 @@ foreach(compiler_flag ${custom_compiler_flags})
     #remove problematic characters
     string(REGEX REPLACE "[^a-zA-Z0-9]" "" current_variable ${compiler_flag})
 
-    CHECK_C_COMPILER_FLAG(${compiler_flag} "FLAG_SUPPORTED_${current_variable}")
-    if (FLAG_SUPPORTED_${current_variable})
+    CHECK_C_COMPILER_FLAG(${compiler_flag} "FLAG_SUPPORTED_C_${current_variable}")
+    if (FLAG_SUPPORTED_C_${current_variable})
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${compiler_flag}")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${compiler_flag}")
+    endif()
+
+    CHECK_CXX_COMPILER_FLAG(${compiler_flag} "FLAG_SUPPORTED_CXX_${current_variable}")
+    if (FLAG_SUPPORTED_CXX_${current_variable})
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${compiler_flag}")
     endif()
 endforeach()
 
