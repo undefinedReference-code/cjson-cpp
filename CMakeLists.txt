@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 
 project(cJSON
     VERSION 1.7.19
-    LANGUAGES C)
+    LANGUAGES C CXX)
 
 cmake_policy(SET CMP0054 NEW)  # set CMP0054 policy
 
@@ -111,8 +111,8 @@ option(ENABLE_TARGET_EXPORT "Enable exporting of CMake targets. Disable when it 
 #cJSON
 set(CJSON_LIB cjson)
 
-file(GLOB HEADERS cJSON.h)
-set(SOURCES cJSON.c)
+file(GLOB HEADERS cJSON.h cJson-cpp.h cJSON_internal.h)
+set(SOURCES cJSON.c cJson-cpp.cpp)
 
 option(BUILD_SHARED_AND_STATIC_LIBS "Build both shared and static libraries" Off)
 option(CJSON_OVERRIDE_BUILD_SHARED_LIBS "Override BUILD_SHARED_LIBS with CJSON_BUILD_SHARED_LIBS" OFF)

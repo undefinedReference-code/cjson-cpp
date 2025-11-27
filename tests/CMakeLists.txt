@@ -72,7 +72,7 @@ if(ENABLE_CJSON_TEST)
     endif()
 
     foreach(unity_test ${unity_tests})
-        add_executable("${unity_test}" "${unity_test}.c")
+        add_executable("${unity_test}" "${unity_test}.c" "../cJson-cpp.cpp")
         if("${CMAKE_C_COMPILER_ID}" STREQUAL "MSVC")
             target_sources(${unity_test} PRIVATE unity_setup.c)
         endif()
