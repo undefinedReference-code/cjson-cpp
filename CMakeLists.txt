@@ -77,6 +77,12 @@ if (ENABLE_SANITIZERS)
         -fsanitize=integer
         -fno-sanitize-recover
         )
+    set(IGNORE_LIST_FILE "${CMAKE_CURRENT_SOURCE_DIR}/External/.sanitizer-ignorelist")
+
+    if (EXISTS "${IGNORE_LIST_FILE}")
+        list(APPEND custom_compiler_flags "-fsanitize-blacklist=${IGNORE_LIST_FILE}")
+        list(APPEND custom_compiler_flags "-fsanitize-ignorelist=${IGNORE_LIST_FILE}")
+    endif()
 endif()
 
 option(ENABLE_SAFE_STACK "Enables the SafeStack instrumentation pass by the Code Pointer Integrity Project" OFF)
