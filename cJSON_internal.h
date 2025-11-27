@@ -16,18 +16,6 @@ typedef struct
     internal_hooks hooks;
 } parse_buffer;
 
-/* get the decimal point character of the current locale */
-static unsigned char get_decimal_point(void)
-{
-#ifdef ENABLE_LOCALES
-    struct lconv* lconv = localeconv();
-    return (unsigned char)lconv->decimal_point[0];
-#else
-    return '.';
-#endif
-}
-
-
 
 /* check if the given size is left to read in a given parse buffer (starting with 1) */
 #define can_read(buffer, size) ((buffer != NULL) && (((buffer)->offset + size) <= (buffer)->length))

@@ -60,7 +60,7 @@ jobs:
           make test
           
   macos:
-    runs-on: macos-latest
+    runs-on: macos-14
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     strategy:
       fail-fast: false
@@ -85,9 +85,9 @@ jobs:
             EVENT_CMAKE_OPTIONS="-DENABLE_CJSON_UTILS=ON -DENABLE_VALGRIND=OFF -DENABLE_SAFE_STACK=OFF -DENABLE_SANITIZERS=OFF"
           fi
           if [ "${{ matrix.compiler }}" == "GCC" ]; then
-            export CC=gcc
+            export CC=gcc CXX=g++
           else
-            export CC=clang
+            export CC=clang CXX=clang++
           fi
           #run build and test
           JOBS=20
