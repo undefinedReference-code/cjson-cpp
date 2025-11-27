@@ -1,6 +1,6 @@
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 cmake_minimum_required(VERSION 3.10)
-
+set(CMAKE_CXX_STANDARD 20)
 
 project(cJSON
     VERSION 1.7.19
